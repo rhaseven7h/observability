@@ -1,0 +1,28 @@
+2021-08-20T21:31:35.088-0500	INFO	instance/beat.go:665	Home path: [/Users/gmedina/Projects/kibanatest/k/metricbeat-7.14.0-darwin-x86_64] Config path: [/Users/gmedina/Projects/kibanatest/k/metricbeat-7.14.0-darwin-x86_64] Data path: [/Users/gmedina/Projects/kibanatest/k/metricbeat-7.14.0-darwin-x86_64/data] Logs path: [/Users/gmedina/Projects/kibanatest/k/metricbeat-7.14.0-darwin-x86_64/logs]
+2021-08-20T21:31:35.090-0500	INFO	instance/beat.go:673	Beat ID: 0159cbda-bde4-426d-a076-adcfff5b714c
+2021-08-20T21:31:35.478-0500	INFO	[beat]	instance/beat.go:1014	Beat info	{"system_info": {"beat": {"path": {"config": "/Users/gmedina/Projects/kibanatest/k/metricbeat-7.14.0-darwin-x86_64", "data": "/Users/gmedina/Projects/kibanatest/k/metricbeat-7.14.0-darwin-x86_64/data", "home": "/Users/gmedina/Projects/kibanatest/k/metricbeat-7.14.0-darwin-x86_64", "logs": "/Users/gmedina/Projects/kibanatest/k/metricbeat-7.14.0-darwin-x86_64/logs"}, "type": "metricbeat", "uuid": "0159cbda-bde4-426d-a076-adcfff5b714c"}}}
+2021-08-20T21:31:35.478-0500	INFO	[beat]	instance/beat.go:1023	Build info	{"system_info": {"build": {"commit": "e127fc31fc6c00fdf8649808f9421d8f8c28b5db", "libbeat": "7.14.0", "time": "2021-07-29T21:09:05.000Z", "version": "7.14.0"}}}
+2021-08-20T21:31:35.478-0500	INFO	[beat]	instance/beat.go:1026	Go runtime info	{"system_info": {"go": {"os":"darwin","arch":"amd64","max_procs":8,"version":"go1.16.6"}}}
+2021-08-20T21:31:35.479-0500	INFO	[beat]	instance/beat.go:1030	Host info	{"system_info": {"host": {"architecture":"x86_64","boot_time":"2021-08-18T08:55:52.070468-05:00","name":"athena.local","ip":["127.0.0.1/8","::1/128","fe80::1/64","fe80::1c00:d9ff:fe21:c630/64","fe80::1c00:d9ff:fe21:c631/64","fe80::9a:6b26:f8f8:af03/64","192.168.7.176/24","fe80::24de:e7ff:fe88:ab72/64","fe80::24de:e7ff:fe88:ab72/64","fe80::54ea:48d9:ee8c:a0e6/64","fe80::5e1d:f9a1:ad73:e0f6/64"],"kernel_version":"20.5.0","mac":["1e:00:d9:21:c6:30","1e:00:d9:21:c6:31","1e:00:d9:21:c6:10","1e:00:d9:21:c6:11","36:58:5f:b5:90:00","36:58:5f:b5:90:04","36:58:5f:b5:90:00","3e:91:80:d0:47:6d","1c:91:80:d0:47:6d","26:de:e7:88:ab:72","26:de:e7:88:ab:72","00:e0:4c:83:e0:e2"],"os":{"type":"macos","family":"darwin","platform":"darwin","name":"Mac OS X","version":"10.16","major":10,"minor":16,"patch":0,"build":"20F71"},"timezone":"CDT","timezone_offset_sec":-18000,"id":"2B9498ED-F699-5857-8B58-2B67EC5D06D7"}}}
+2021-08-20T21:31:35.479-0500	INFO	[beat]	instance/beat.go:1059	Process info	{"system_info": {"process": {"cwd": "/Users/gmedina/Projects/kibanatest/k/metricbeat-7.14.0-darwin-x86_64", "exe": "./metricbeat", "name": "metricbeat", "pid": 61134, "ppid": 36435, "start_time": "2021-08-20T21:31:33.986-0500"}}}
+2021-08-20T21:31:35.479-0500	INFO	instance/beat.go:309	Setup Beat: metricbeat; Version: 7.14.0
+2021-08-20T21:31:35.480-0500	INFO	[index-management]	idxmgmt/std.go:184	Set output.elasticsearch.index to 'metricbeat-7.14.0' as ILM is enabled.
+2021-08-20T21:31:35.483-0500	INFO	[esclientleg]	eslegclient/connection.go:100	elasticsearch url: http://localhost:9200
+2021-08-20T21:31:35.487-0500	INFO	[publisher]	pipeline/module.go:113	Beat name: athena.local
+2021-08-20T21:31:35.512-0500	INFO	[esclientleg]	eslegclient/connection.go:100	elasticsearch url: http://localhost:9200
+2021-08-20T21:31:35.803-0500	INFO	[esclientleg]	eslegclient/connection.go:273	Attempting to connect to Elasticsearch version 7.14.0
+2021-08-20T21:31:35.826-0500	INFO	[index-management]	idxmgmt/std.go:261	Auto ILM enable success.
+2021-08-20T21:31:35.925-0500	INFO	[index-management.ilm]	ilm/std.go:170	ILM policy metricbeat successfully created.
+2021-08-20T21:31:35.926-0500	INFO	[index-management]	idxmgmt/std.go:401	Set setup.template.name to '{metricbeat-7.14.0 {now/d}-000001}' as ILM is enabled.
+2021-08-20T21:31:35.926-0500	INFO	[index-management]	idxmgmt/std.go:406	Set setup.template.pattern to 'metricbeat-7.14.0-*' as ILM is enabled.
+2021-08-20T21:31:35.926-0500	INFO	[index-management]	idxmgmt/std.go:440	Set settings.index.lifecycle.rollover_alias in template to {metricbeat-7.14.0 {now/d}-000001} as ILM is enabled.
+2021-08-20T21:31:35.928-0500	INFO	[index-management]	idxmgmt/std.go:444	Set settings.index.lifecycle.name in template to {metricbeat {"policy":{"phases":{"hot":{"actions":{"rollover":{"max_age":"30d","max_size":"50gb"}}}}}}} as ILM is enabled.
+2021-08-20T21:31:35.937-0500	INFO	template/load.go:229	Existing template will be overwritten, as overwrite is enabled.
+2021-08-20T21:31:36.146-0500	INFO	template/load.go:132	Try loading template metricbeat-7.14.0 to Elasticsearch
+2021-08-20T21:31:36.536-0500	INFO	template/load.go:124	Template with name "metricbeat-7.14.0" loaded.
+2021-08-20T21:31:36.538-0500	INFO	[index-management]	idxmgmt/std.go:297	Loaded index template.
+2021-08-20T21:31:36.834-0500	INFO	[index-management.ilm]	ilm/std.go:135	Index Alias metricbeat-7.14.0 successfully created.
+2021-08-20T21:31:36.835-0500	INFO	kibana/client.go:122	Kibana url: http://localhost:5601
+2021-08-20T21:31:37.163-0500	INFO	kibana/client.go:122	Kibana url: http://localhost:5601
+2021-08-20T21:31:38.099-0500	INFO	[add_cloud_metadata]	add_cloud_metadata/add_cloud_metadata.go:101	add_cloud_metadata: hosting provider type not detected.
+2021-08-20T21:33:22.894-0500	INFO	instance/beat.go:848	Kibana dashboards successfully loaded.

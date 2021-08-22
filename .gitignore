@@ -1,0 +1,8 @@
+/.idea
+/tmp
+/temp
+/sandbox
+
+/metricbeat/metricbeat
+/filebeat/filebeat
+
