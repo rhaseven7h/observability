@@ -6,3 +6,7 @@
 /metricbeat/metricbeat
 /filebeat/filebeat
 
+log.json
+meta.json
+*.lock
+

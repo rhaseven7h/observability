@@ -1,12 +1,14 @@
 package main
 
 import (
+	"context"
 	_ "expvar"
 	"fmt"
 	"math/rand"
 	"net/http"
 	"os"
 	"os/signal"
+	"syscall"
 	"time"
 
 	"github.com/prometheus/client_golang/prometheus"
@@ -45,6 +47,51 @@ func main() {
 	lg.
 		WithField("bind_address", bindAddress).
 		Infoln("STARTING KIBANA TEST")
+
+	ctx, cnf := context.WithCancel(context.Background())
+	updatesReceived := promauto.NewCounter(prometheus.CounterOpts{
+		Namespace:   "rha7",
+		Subsystem:   "sample",
+		Name:        "total",
+		Help:        "Total samples received",
+		ConstLabels: map[string]string{},
+	})
+	updatesErrored := promauto.NewCounter(prometheus.CounterOpts{
+		Namespace:   "rha7",
+		Subsystem:   "sample",
+		Name:        "errors",
+		Help:        "The error samples received",
+		ConstLabels: map[string]string{},
+	})
+	cc := make(chan os.Signal, 1)
+	signal.Notify(
+		cc,
+		syscall.SIGINT, syscall.SIGHUP, syscall.SIGQUIT,
+		syscall.SIGSTOP, syscall.SIGTERM, syscall.SIGTERM,
+	)
+	go func() {
+		<-cc
+		lg.Info("received-interrupt")
+		cnf()
+	}()
+	go func() {
+		for {
+			select {
+			case <-ctx.Done():
+				lg.WithError(ctx.Err()).Error("samples-error")
+				return
+			default:
+				eventsGenerated := rand.Int63n(9) + 1
+				lg.WithField("events_generated", eventsGenerated).Info("events-generated")
+				updatesReceived.Add(float64(eventsGenerated))
+				if rand.Intn(10) < 2 {
+					lg.Info("error-generated")
+					updatesErrored.Add(1)
+				}
+			}
+			time.Sleep(500 * time.Millisecond)
+		}
+	}()
 
 	c := make(chan os.Signal, 1)
 	signal.Notify(c, os.Interrupt)
